@@ -21,7 +21,8 @@ app.use(
             "http://localhost",
             "http://localhost:8000",
             "https://sharence-dashboard.vercel.app",
-            "https://sharence-client.vercel.app"
+            "https://sharence-client.vercel.app",
+            'http://localhost:8081'
         ],
         methods: ["GET", "POST", "PUT", "OPTIONS", "UPDATE", "DELETE"],
         credentials: true,
@@ -39,7 +40,10 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 
-
+app.use((req, res, next) => {
+    console.log('Authorization Header:', req.headers.authorization);
+    next();
+  });
 // Route Import
 app.use("/api/v1/auth", express.raw({ type: "application/json" }), authRouter);
 app.use("/api/v1/preferences", preferencesRouter);
