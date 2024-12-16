@@ -22,7 +22,7 @@ app.use(
             "http://localhost:8000",
             "https://sharence-dashboard.vercel.app",
             "https://sharence-client.vercel.app",
-            'http://localhost:8081'
+            "*"
         ],
         methods: ["GET", "POST", "PUT", "OPTIONS", "UPDATE", "DELETE"],
         credentials: true,
